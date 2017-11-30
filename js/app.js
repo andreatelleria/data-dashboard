@@ -222,6 +222,12 @@ window.addEventListener('load', function() {
 
     scoresJedi.textContent = (totalRatingJedi / generationData.ratings.length).toFixed(2);
     scoresJedi.appendChild(div);
+
+    // generationData.students.forEach(function(student) {
+    //   var nameStu = student;
+    //   console.log(nameStu);
+    // });
+
   };
 
   // agregar el evento click a todos los tabs
