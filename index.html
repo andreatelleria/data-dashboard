@@ -17,7 +17,7 @@
   <!-- Seleccionar sede -->
   <div class="content-header">
     <select id="selection" class="selection">
-
+      <!-- Le pongo ese valor para poder atrapar ese valor desde javascript -->
       <option value="LIM-2016-2">Lima 2016 - II</option>
       <option value="LIM-2017-1">Lima 2017 - I</option>
       <option value="LIM-2017-2" selected="true">Lima 2017 - II</option>
@@ -33,14 +33,14 @@
       <option value="SCL-2017-2">Santiago de Chile 2017 - II</option>
 
     </select>
-    
+    <!-- Tabs -->
     <div class="box-tabs">
       <div class="tab" data-content="0">Overview</div>
       <div class="tab" data-content="1">Students</div>
       <div class="tab" data-content="2">Teacher</div>
     </div>
   </div>
-
+  <!-- Información de los datos -->
   <section id="contenido-sede">
     <div class="container">
       <div class="box-contents">
@@ -49,13 +49,16 @@
             <div class="col">
               <div class="box">
                 <h1>Enrollment</h1>
+                <!-- Aca iran lo datos de las estudiantes inscritas -->
                 <div id="students-inscribed" class="cajita">#</div>
+                <!-- Aca ira el % las estudiantes que desertaron -->
                 <div id="students-deserted" class="cajita">%</div>
               </div>
             </div>
             <div class="col">
               <div class="box">
                 <h1>Achievement</h1>
+                <!-- Aca ira el total de estudiantes que pasaron el 70% (tech y hse) -->
                 <div id="students-approved" class="cajita">#</div>
                 <div id="total-approved" class="cajita">%</div>
               </div>
@@ -70,11 +73,13 @@
           </div>
           <div class="section tech">
             <h1>Tech</h1>
+            <!-- Total de estudiantes que superan la meta tech -->
             <div id="approved-tech" class="cajita">#</div>
             <div id="average-tech" class="cajita">%</div>
           </div>
           <div class="section hse">
             <h1>Hse</h1>
+            <!-- Total de estudiantes que superan la meta hse -->
             <div id="approved-hse" class="cajita">#</div>
             <div id="average-hse" class="cajita">%</div>
           </div>
@@ -99,10 +104,10 @@
             </div>
           </div>
         </div>
-        <div id="students" class="content">
-
+        <div class="content">
+          Contenido de Students
         </div>
-        <div class="content">Contenido 3</div>
+        <div class="content">Contenido de Teachers</div>
       </div>
     </div>
   </section>

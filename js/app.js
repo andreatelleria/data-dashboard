@@ -1,6 +1,6 @@
 window.addEventListener('load', function() {
   var selection = document.getElementById('selection');
-  var contenidoSede = document.getElementById('contenido-sede');
+  // var contenidoSede = document.getElementById('contenido-sede');
 
   var tabs = document.getElementsByClassName('tab');
   var contents = document.getElementsByClassName('content');
@@ -29,15 +29,27 @@ window.addEventListener('load', function() {
 
   function mostrarInfo() {
     //  console.log(e.target.value);
+    // Agarramos el valor de selection y almacenamos en la variable
     var value = selection.value;
+    // console.log(value);
+
+    // El método split convertira una cadena a un array 
     var aux = value.split('-');
+    // console.log(aux);
+
+    // El método shift elimina un elemento del inicio del array y retorna el elemento eliminado que lo almacenare en una variable llamada sedeName
     var sedeName = aux.shift();
     // console.log(sedeName);
+
+    // El método join convierte un array a una cadena separado por un guion 
     var generation = aux.join('-');
 
+    // Almacenamos toda la data en una variable  
     var generationData = data[sedeName][generation];
 
+    // Almacenamos el length de students en una variable
     var totalStudents = generationData.students.length;
+
     // Datos de estudiantes inscritas
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
@@ -49,6 +61,7 @@ window.addEventListener('load', function() {
 
     studentsInscribed.appendChild(div);
 
+    // Esta variable almacenara todas las estudiantes que estan inactivas
     var counter = 0;
     generationData.students.forEach(function(student) {
       // console.log(student);
@@ -62,10 +75,13 @@ window.addEventListener('load', function() {
     parrafo.textContent = '% estudiantes desertoras';
     div.appendChild(parrafo);
     div.classList.add('description');
+
     // Datos de estudiantes que desartaron
     studentsDeserted.textContent = Math.floor((counter * 100) / totalStudents) + '%';
+
     studentsDeserted.appendChild(div);
     
+    // 
     var studentsTarget = 0;
     var totalStudentsTech = 0;
     var totalStudentsHse = 0;
@@ -156,10 +172,6 @@ window.addEventListener('load', function() {
     totalApproved.textContent = porcentajePasaron + '%';
     totalApproved.appendChild(div);
 
-    // [Promoters] = [Respuestas 9 o 10] / [Total respuestas] * 100
-    // [Passive] = [Respuestas 7 u 8] / [Total respuestas] * 100
-    // [Detractors] = [Respuestas entre 1 y 6] / [Total respuestas] * 100
-
     // [NPS] = [Promoters] - [Detractors]
     
     var result = 0;
@@ -246,7 +258,7 @@ window.addEventListener('load', function() {
 
       // agregar la clase active solo a este tab que se le dio click
       event.target.classList.add('active');
-      // agregar la clase active solo al content correspondiente (data-content
+      // agregar la clase active solo al content correspondiente (data-content)
       contents[event.target.dataset.content].classList.add('active');
     });
   }
