@@ -81,35 +81,74 @@ window.addEventListener('load', function() {
 
     studentsDeserted.appendChild(div);
     
-    // 
+    // Total de estudientes que pasan el 70%
     var studentsTarget = 0;
     var totalStudentsTech = 0;
     var totalStudentsHse = 0;
     generationData.students.forEach(function(student) {
+      // Sacamos la cantidad de sprints y lo almacenamos en una variable
       var cantidadDeSprints = student.sprints.length;
+      
+      // Almacenaremos el total de la suma de tech y hse
       var total = 0;
+
+      // Almacenamos el total de tech
       var totalTech = 0;
+
+      // Almacenamos el total de hse
       var totalHse = 0;
+
       student.sprints.forEach(function(sprint) {
         total += (sprint.score.tech + sprint.score.hse);
-        var tech = sprint.score.tech;
+
+        // Obtenemos el puntaje de tech y lo almacenamos en una variable
+        var tech = sprint.score.tech; 
+
         totalTech += tech;
+
+        // Obtenemos el puntaje de hse
         var hse = sprint.score.hse;
         totalHse += hse;
       });
+      // Al total le dividimos entre la cantidad de sprints y guardamos en un variable llamada promedio
       var promedio = total / cantidadDeSprints;
+
+      // TIP: total de puntos es 3000 (tech+hse) y su 70% es 2100
       if (promedio >= 2100) {
         studentsTarget++;
       }
+      // TIP: total de puntajes tech es 1800 y su 70% es 1260
       var promedioTech = totalTech / cantidadDeSprints;
       if (promedioTech >= 1260) {
         totalStudentsTech ++;
       }
+      // TIP: total de puntajes hse es 1200 y su 70% es 840
       var promedioHse = totalHse / cantidadDeSprints;
       if (promedioHse >= 840) {
         totalStudentsHse ++;
       }
     });
+    // Pasaron la meta total 
+    var div = document.createElement('div');
+    var parrafo = document.createElement('p');
+    parrafo.textContent = '# estudiantes que superan la meta';
+    div.appendChild(parrafo);
+    div.classList.add('description');
+
+    studentsApproved.textContent = studentsTarget;
+    studentsApproved.appendChild(div);
+
+    // El porcentaje total 
+    var div = document.createElement('div');
+    var parrafo = document.createElement('p');
+    parrafo.textContent = '% total';
+    div.appendChild(parrafo);
+    div.classList.add('description');
+
+    var porcentajePasaron = Math.floor((studentsTarget * 100) / totalStudents);
+    totalApproved.textContent = porcentajePasaron + '%';
+    totalApproved.appendChild(div);
+
     // Pasaron la meta tech
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
@@ -149,28 +188,6 @@ window.addEventListener('load', function() {
     averageHse.textContent = Math.floor((totalStudentsHse * 100) / totalStudents) + '%';
 
     averageHse.appendChild(div);
-
-
-    // Pasaron la meta total 
-    var div = document.createElement('div');
-    var parrafo = document.createElement('p');
-    parrafo.textContent = '# estudiantes que superan la meta';
-    div.appendChild(parrafo);
-    div.classList.add('description');
-
-    studentsApproved.textContent = studentsTarget;
-    studentsApproved.appendChild(div);
-
-    // El porcentaje total 
-    var div = document.createElement('div');
-    var parrafo = document.createElement('p');
-    parrafo.textContent = '% total';
-    div.appendChild(parrafo);
-    div.classList.add('description');
-
-    var porcentajePasaron = Math.floor((studentsTarget * 100) / totalStudents);
-    totalApproved.textContent = porcentajePasaron + '%';
-    totalApproved.appendChild(div);
 
     // [NPS] = [Promoters] - [Detractors]
     
@@ -234,31 +251,24 @@ window.addEventListener('load', function() {
 
     scoresJedi.textContent = (totalRatingJedi / generationData.ratings.length).toFixed(2);
     scoresJedi.appendChild(div);
-
-    // generationData.students.forEach(function(student) {
-    //   var nameStu = student;
-    //   console.log(nameStu);
-    // });
-
   };
 
-  // agregar el evento click a todos los tabs
   for (var i = 0; i < tabs.length; i++) {
-    // y dentro del click para cada tab
+    // Agregar el evento click a todos los tabs
     tabs[i].addEventListener('click', function(event) {
       for (var j = 0; j < tabs.length; j++) {
-        // quitar la clase active a todos los tabs
+        // Quitar la clase active a todos los tabs
         tabs[j].classList.remove('active');
       }
 
       for (var k = 0; k < contents.length; k++) {
-        // quitar la clase active a todos los contents
+        // Quitar la clase active a todos los contents
         contents[k].classList.remove('active');
       }
 
-      // agregar la clase active solo a este tab que se le dio click
+      // Agregar la clase active solo a este tab que se le dio click
       event.target.classList.add('active');
-      // agregar la clase active solo al content correspondiente (data-content)
+      // Agregar la clase active solo al content correspondiente (data-content)
       contents[event.target.dataset.content].classList.add('active');
     });
   }
