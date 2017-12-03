@@ -136,6 +136,8 @@ h2 {
 
 .content.active {
   display: block;
+}
+
 .box-tabs {
   overflow: auto;
 }
@@ -152,17 +154,16 @@ h2 {
   border-bottom: 4px solid #f7b617;
 }
 
-/*ESTILOS PARA SECCIÓN STUDENTS*/
+/*ESTILOS PARA TAB/SECCIÓN STUDENTS*/
 .students-tab {
   position: relative;
-  background-color: red;
 }
 
-div#specialization.specialization {
-	width: 400px;
+.students-tab .specialization {
+	width: 35%;
   position: absolute;
-  top: 100px;
-  margin-left: 70px;
+  /*top: 100px;
+  margin-left: 70px;*/
   padding: 20px;
   border: none;
 	border-radius: 5px;
@@ -179,58 +180,83 @@ div#specialization.specialization {
   display: block;
 }
 
+.students-tab .search-box {
+  width: 60%;
+  position: relative;
+  float: right;
+}
+
 .students-tab .search-box input {
-  width: 58%;
-  height: 40px;
-  position: absolute;
+  width: 100%;
+  height: 45px;
+  /*position: absolute;
   top: 100px;
-  right: 70px;
-  padding: 5px;
+  right: 70px;*/
   border: none;
+  padding-left: 2%;
   box-shadow: 3px 3px #E1E1E1;
 	border-radius: 5px;
+  font-size: 18px;
 }
 
 .students-tab .search-box span .fa-search {
   position: absolute;
-  top: 110px;
-  right: 830px;
+  top: 12px;
+  left: 2%;
 	font-size: 18px;
   color: #E1E1E1;
   z-index: 20;
 }
 
-.students-tab .students-profile {
-  width: 58%;
-  height: 220px;;
-  position: absolute;
-  top: 150px;
-  right: 70px;
-  margin-top: 22px;
-  padding: 20px;
+.profileContainer {
+  width: 60%;
+  height: 220px;
+  float: right;
+  position: relative;
+  /*position: absolute;
+  top: 50px;
+  right: 70px;*/
+  margin-top: 20px;
   background-color: white;
   box-shadow: 3px 3px #E1E1E1;
 	border-radius: 5px;
 }
 
-.students-tab .students-profile .full-name {
-  width: 30%;
+.imageContainer {
+  width: 26%;
+  height: 90%;
   display: inline-block;
-  position: absolute;
-  left: 200px;
+  margin: 2%;
 }
 
-.students-tab .students-profile .students-skills {
-  width: 30%;
-  display: inline-block;
-  position: absolute;
-  right: 40px;
+.imageContent {
+  width: 100%;
+  height: 100%;
 }
 
-.students-tab .students-profile .students-skills .skills {
+.nameContainer {
+  width: 25%;
+  display: inline-block;
+}
+
+.nameParagraph {
+  position: absolute;
+  top: 10%;
+  font-size: 22px;
+}
+
+.skillsContainer {
+  width: 37%;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+}
+
+.skillsProfile {
   display: inline-block;
   width: 70px;
   margin: 3px;
+  margin-top: 10%;
   padding: 5px;
   background-color: #E1E1E1;
   font-size: 10px;
@@ -246,8 +272,4 @@ div#specialization.specialization {
   position: absolute;
   right: 40px;
   bottom: 20px;
-}
-
-#studentsP {
-  background-color: red;
-}
+}*/

@@ -25,8 +25,7 @@ window.addEventListener('load', function() {
 
   var scoresJedi = document.getElementById('scores-jedi');
 
-  var profilePic = document.getElementById('profilePic');
-  //console.log(profilePic);
+  var studentsProfile = document.getElementById('studentsProfile');
 
   selection.addEventListener('change', mostrarInfo);
 
@@ -226,27 +225,47 @@ window.addEventListener('load', function() {
     scoresJedi.textContent = (totalRatingJedi / generationData.ratings.length).toFixed(2);
     scoresJedi.appendChild(div);
 
-    /*Funcionalidad para tab Students*/
+    /*Funcionalidad para Tab Students*/
     for (var i = 0; i < generationData.students.length; i++) {
       var photo = generationData.students[i].photo; //devuelve link de cada foto
       var fullName = generationData.students[i].name; // devuelve nombre
       var img = document.createElement('img');
-      img.setAttribute('src', photo);
-      //profilePic.appendChild(img);
-      img.style.width = '100%';
-      img.style.height = '100%';
 
-      var imgContainer = document.createElement('div') // contenedor de imagen
+      /*Creamos contenedor principal para cada perfil individual*/
+      var profileContainer = document.createElement('div');
+      studentsProfile.appendChild(profileContainer);
+      profileContainer.classList.add('profileContainer');
+
+      /*Creamos contenedor para imagen de alumnas*/
+      var imgContainer = document.createElement('div');
+      profileContainer.appendChild(imgContainer);
       imgContainer.appendChild(img);
-      profilePic.appendChild(imgContainer);
-      imgContainer.style.width = '205px';
-      imgContainer.style.height = '205px';
-      imgContainer.style.display = 'inline-block';
-      //imgContainer.appendChild(fullName);
-      var nameContainer = document.createElement('p'); // contenedor de nombre
-      nameContainer.textContent = fullName;
-      profilePic.appendChild(nameContainer);
-      //nameContainer.style.display = 'inline-block';
+      img.setAttribute('src', photo);
+      imgContainer.classList.add('imageContainer');
+      img.classList.add('imageContent');
+
+      /*Creamos contenedor para nombre de alumnas*/
+      var nameContainer = document.createElement('div');
+      var nameParagraph = document.createElement('p');
+      profileContainer.appendChild(nameContainer);
+      nameContainer.appendChild(nameParagraph);
+      nameParagraph.textContent = fullName;
+      nameContainer.classList.add('nameContainer');
+      nameParagraph.classList.add('nameParagraph');
+
+      /*Creamos contendor para cajas de habilidades*/
+      var skillsContainer = document.createElement('div');
+      var techProfileContainer = document.createElement('div');
+      var hseProfileContainer = document.createElement('div');
+      var engProfileContainer = document.createElement('div');
+      profileContainer.appendChild(skillsContainer);
+      skillsContainer.classList.add('skillsContainer');
+      skillsContainer.appendChild(techProfileContainer);
+      skillsContainer.appendChild(hseProfileContainer);
+      skillsContainer.appendChild(engProfileContainer);
+      techProfileContainer.classList.add('skillsProfile');
+      hseProfileContainer.classList.add('skillsProfile');
+      engProfileContainer.classList.add('skillsProfile');
 
     }
 
