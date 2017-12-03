@@ -40,6 +40,7 @@ window.addEventListener('load', function() {
     var generationData = data[sedeName][generation];
 
     var totalStudents = generationData.students.length;
+
     // Datos de estudiantes inscritas
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
@@ -225,7 +226,7 @@ window.addEventListener('load', function() {
     scoresJedi.textContent = (totalRatingJedi / generationData.ratings.length).toFixed(2);
     scoresJedi.appendChild(div);
 
-    /*Funcionalidad para Tab Students*/
+    /*-------- Funcionalidad para Tab Students --------*/
     for (var i = 0; i < generationData.students.length; i++) {
       var photo = generationData.students[i].photo; //devuelve link de cada foto
       var fullName = generationData.students[i].name; // devuelve nombre
@@ -266,6 +267,22 @@ window.addEventListener('load', function() {
       techProfileContainer.classList.add('skillsProfile');
       hseProfileContainer.classList.add('skillsProfile');
       engProfileContainer.classList.add('skillsProfile');
+
+      /*Obtener puntaje de cada alumna*/
+      var studentSprints = generationData.students[i].sprints;
+      //console.log(studentSprints);
+
+      for (var j = 0; j < studentSprints.length; j++) {
+        var studentTechScore = studentSprints[j].score.tech;
+        var studentHseScore = studentSprints[j].score.hse;
+        console.log(studentTechScore);
+        console.log(studentHseScore);
+      }
+
+      /*Ocultamos perfil de estudiantes desertoras*/
+      if (generationData.students[i].active !== true) {
+        profileContainer.classList.add('content'); //display: none
+      }
 
     }
 
