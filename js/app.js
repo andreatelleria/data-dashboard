@@ -272,15 +272,29 @@ window.addEventListener('load', function() {
         var studentSprints = generationData.students[i].sprints;
         //console.log(studentSprints);
 
+        var arrayTech = [];
+        var sumTechProfile = 0;
+        console.log(arrayTech);
+        console.log(arrayTech.length);
+
         for (var j = 0; j < studentSprints.length; j++) {
           var studentTechScore = studentSprints[j].score.tech;
+          //console.log(studentTechScore);
           var studentHseScore = studentSprints[j].score.hse;
-          console.log(studentHseScore); // expresa las notas por tech y sprints.
-          
 
+          /*Pasamos valor de notas a procentajes*/
+          var averageTechProfile = parseFloat(((studentTechScore*100)/1800).toFixed(2));
+          var averageHseProfile = parseFloat(((studentHseScore*100)/1800).toFixed(2));
 
-          console.log(studentTechScore);
-          console.log(studentHseScore);
+          arrayTech.push(averageTechProfile);
+          for (k = 0; k < arrayTech.length; k++) {
+
+          }
+
+          // console.log(studentTechScore);
+          // console.log(studentHseScore);
+          // console.log(averageTechProfile);
+          // console.log(averageHseProfile);
         }
 
       }
