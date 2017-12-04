@@ -22,7 +22,6 @@ window.addEventListener('load', function() {
   var averageSatisfied = document.getElementById('average-satisfied');
 
   var scoresTeacher = document.getElementById('scores-teacher');
-
   var scoresJedi = document.getElementById('scores-jedi');
 
   var studentsProfile = document.getElementById('studentsProfile');
@@ -252,7 +251,7 @@ window.addEventListener('load', function() {
       nameContainer.appendChild(nameParagraph);
       nameParagraph.textContent = fullName;
       nameContainer.classList.add('nameContainer');
-      nameParagraph.classList.add('nameParagraph');
+      nameParagraph.classList.add('nameParagraph', 'toUppercase', 'toStrong');
 
       /*Creamos contendor para cajas de habilidades*/
       var skillsContainer = document.createElement('div');

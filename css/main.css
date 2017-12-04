@@ -71,9 +71,11 @@ header .logo {
   background-color: #fff;
   min-height: 250px;
 }
+
 #students-deserted {
   color: red;
 }
+
 .cajita {
   background-color: #e1e1e1;
   float: left;
@@ -154,13 +156,21 @@ h2 {
   border-bottom: 4px solid #f7b617;
 }
 
-/*ESTILOS PARA TAB/SECCIÓN STUDENTS*/
+/*-------- ESTILOS PARA TAB/SECCIÓN STUDENTS --------*/
+.toUppercase {
+  text-transform: uppercase;
+}
+
+.toStrong {
+  font-weight: bold;
+}
+
 .students-tab {
   position: relative;
 }
 
 .students-tab .specialization {
-	width: 35%;
+	width: 30%;
   position: absolute;
   /*top: 100px;
   margin-left: 70px;*/
@@ -181,7 +191,7 @@ h2 {
 }
 
 .students-tab .search-box {
-  width: 60%;
+  width: 65%;
   position: relative;
   float: right;
 }
@@ -202,15 +212,15 @@ h2 {
 .students-tab .search-box span .fa-search {
   position: absolute;
   top: 12px;
-  left: 2%;
+  right: 2%;
 	font-size: 18px;
   color: #E1E1E1;
   z-index: 20;
 }
 
 .profileContainer {
-  width: 60%;
-  height: 220px;
+  width: 65%;
+  height: 200px;
   float: right;
   position: relative;
   /*position: absolute;
@@ -223,8 +233,8 @@ h2 {
 }
 
 .imageContainer {
-  width: 26%;
-  height: 90%;
+  width: 22%;
+  height: 85%;
   display: inline-block;
   margin: 2%;
 }
@@ -242,14 +252,14 @@ h2 {
 .nameParagraph {
   position: absolute;
   top: 10%;
-  font-size: 22px;
+  font-size: 20px;
 }
 
 .skillsContainer {
-  width: 37%;
+  width: 38%;
   display: inline-block;
   position: absolute;
-  right: 10px;
+  right: 0;
 }
 
 .skillsProfile {
@@ -264,7 +274,7 @@ h2 {
   line-height: 22px;
 }
 
-.students-tab .students-profile .students-skills .skills p:first-child {
+/*.students-tab .students-profile .students-skills .skills p:first-child {
   font-size: 15px;
 }
 
