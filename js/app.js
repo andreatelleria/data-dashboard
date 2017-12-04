@@ -231,60 +231,56 @@ window.addEventListener('load', function() {
       var fullName = generationData.students[i].name; // devuelve nombre
       var img = document.createElement('img');
 
-      /*Creamos contenedor principal para cada perfil individual*/
-      var profileContainer = document.createElement('div');
-      studentsProfile.appendChild(profileContainer);
-      profileContainer.classList.add('profileContainer');
+      if (generationData.students[i].active === true) {
+        /*Creamos contenedor principal para cada perfil individual*/
+        var profileContainer = document.createElement('div');
+        studentsProfile.appendChild(profileContainer);
+        profileContainer.classList.add('profileContainer');
 
-      /*Creamos contenedor para imagen de alumnas*/
-      var imgContainer = document.createElement('div');
-      profileContainer.appendChild(imgContainer);
-      imgContainer.appendChild(img);
-      img.setAttribute('src', photo);
-      imgContainer.classList.add('imageContainer');
-      img.classList.add('imageContent');
+        /*Creamos contenedor para imagen de alumnas*/
+        var imgContainer = document.createElement('div');
+        profileContainer.appendChild(imgContainer);
+        imgContainer.appendChild(img);
+        img.setAttribute('src', photo);
+        imgContainer.classList.add('imageContainer');
+        img.classList.add('imageContent');
 
-      /*Creamos contenedor para nombre de alumnas*/
-      var nameContainer = document.createElement('div');
-      var nameParagraph = document.createElement('p');
-      profileContainer.appendChild(nameContainer);
-      nameContainer.appendChild(nameParagraph);
-      nameParagraph.textContent = fullName;
-      nameContainer.classList.add('nameContainer');
-      nameParagraph.classList.add('nameParagraph', 'toUppercase', 'toStrong');
+        /*Creamos contenedor para nombre de alumnas*/
+        var nameContainer = document.createElement('div');
+        var nameParagraph = document.createElement('p');
+        profileContainer.appendChild(nameContainer);
+        nameContainer.appendChild(nameParagraph);
+        nameParagraph.textContent = fullName;
+        nameContainer.classList.add('nameContainer');
+        nameParagraph.classList.add('nameParagraph', 'toUppercase', 'toStrong');
 
-      /*Creamos contendor para cajas de habilidades*/
-      var skillsContainer = document.createElement('div');
-      var techProfileContainer = document.createElement('div');
-      var hseProfileContainer = document.createElement('div');
-      var engProfileContainer = document.createElement('div');
-      profileContainer.appendChild(skillsContainer);
-      skillsContainer.classList.add('skillsContainer');
-      skillsContainer.appendChild(techProfileContainer);
-      skillsContainer.appendChild(hseProfileContainer);
-      skillsContainer.appendChild(engProfileContainer);
-      techProfileContainer.classList.add('skillsProfile');
-      hseProfileContainer.classList.add('skillsProfile');
-      engProfileContainer.classList.add('skillsProfile');
+        /*Creamos contendor para cajas de habilidades*/
+        var skillsContainer = document.createElement('div');
+        var techProfileContainer = document.createElement('div');
+        var hseProfileContainer = document.createElement('div');
+        var engProfileContainer = document.createElement('div');
+        profileContainer.appendChild(skillsContainer);
+        skillsContainer.classList.add('skillsContainer');
+        skillsContainer.appendChild(techProfileContainer);
+        skillsContainer.appendChild(hseProfileContainer);
+        skillsContainer.appendChild(engProfileContainer);
+        techProfileContainer.classList.add('skillsProfile');
+        hseProfileContainer.classList.add('skillsProfile');
+        engProfileContainer.classList.add('skillsProfile');
 
-      /*Obtener puntaje de cada alumna*/
-      var studentSprints = generationData.students[i].sprints;
-      //console.log(studentSprints);
+        /*Obtener puntaje de cada alumna*/
+        // var studentSprints = generationData.students[i].sprints;
+        // console.log(studentSprints);
+        //
+        // for (var j = 0; j < studentSprints.length; j++) {
+        //   var studentTechScore = studentSprints[j].score.tech;
+        //   var studentHseScore = studentSprints[j].score.hse;
+        //   //console.log(studentTechScore);
+        //   //console.log(studentHseScore);
+        // }
 
-      for (var j = 0; j < studentSprints.length; j++) {
-        var studentTechScore = studentSprints[j].score.tech;
-        var studentHseScore = studentSprints[j].score.hse;
-        console.log(studentTechScore);
-        console.log(studentHseScore);
       }
-
-      /*Ocultamos perfil de estudiantes desertoras*/
-      if (generationData.students[i].active !== true) {
-        profileContainer.classList.add('content'); //display: none
-      }
-
     }
-
   };
 
   // agregar el evento click a todos los tabs
