@@ -97,43 +97,63 @@ window.addEventListener('load', function() {
       var cantidadDeSprints = student.sprints.length;
       
       // Almacenaremos el total de la suma de tech y hse
-      var total = 0;
+      // var total = 0;
 
       // Almacenamos el total de tech
-      var totalTech = 0;
+      // var totalTech = 0;
 
       // Almacenamos el total de hse
-      var totalHse = 0;
+      // var totalHse = 0;
 
-      student.sprints.forEach(function(sprint) {
-        total += (sprint.score.tech + sprint.score.hse);
+      // student.sprints.forEach(function(sprint) {
+      // total += (sprint.score.tech + sprint.score.hse);
 
-        // Obtenemos el puntaje de tech y lo almacenamos en una variable
-        var tech = sprint.score.tech; 
+      // Obtenemos el puntaje de tech y lo almacenamos en una variable
+      // var tech = sprint.score.tech; 
 
-        totalTech += tech;
+      // totalTech += tech;
 
-        // Obtenemos el puntaje de hse
-        var hse = sprint.score.hse;
-        totalHse += hse;
-      });
+      // Obtenemos el puntaje de hse
+      // var hse = sprint.score.hse;
+      // totalHse += hse;
+      // });
       // Al total le dividimos entre la cantidad de sprints y guardamos en un variable llamada promedio
-      var promedio = total / cantidadDeSprints;
+      // var promedio = total / cantidadDeSprints;
 
       // TIP: total de puntos es 3000 (tech+hse) y su 70% es 2100
-      if (promedio >= 2100 && student.active === true) {
-        studentsTarget++;
+      if (student.active === true) {
+        var sumTech = 0;
+        var sumHse = 0;
+        student.sprints.forEach(function(sprint) {
+          sumTech += sprint.score.tech;
+          sumHse += sprint.score.hse;
+        });
+
+        var promedioTech = sumTech / cantidadDeSprints;
+        var promedioHse = sumHse / cantidadDeSprints;
+
+        if ((promedioTech >= 1260) && (promedioHse >= 840)) {
+          studentsTarget++;
+        } 
+        // TIP: total de puntajes tech es 1800 y su 70% es 1260
+        if (promedioTech >= 1260) {
+          totalStudentsTech++;
+        }
+        // TIP: total de puntajes hse es 1200 y su 70% es 840
+        if (promedioHse >= 840) {
+          totalStudentsHse++;
+        }
       }
       // TIP: total de puntajes tech es 1800 y su 70% es 1260
-      var promedioTech = totalTech / cantidadDeSprints;
-      if (promedioTech >= 1260 && student.active === true) {
-        totalStudentsTech ++;
-      }
+      // var promedioTech = totalTech / cantidadDeSprints;
+      // if (promedioTech >= 1260 && student.active === true) {
+      //   totalStudentsTech++;
+      // }
       // TIP: total de puntajes hse es 1200 y su 70% es 840
-      var promedioHse = totalHse / cantidadDeSprints;
-      if (promedioHse >= 840 && student.active === true) {
-        totalStudentsHse ++;
-      }
+      // var promedioHse = totalHse / cantidadDeSprints;
+      // if (promedioHse >= 840 && student.active === true) {
+      //   totalStudentsHse ++;
+      // }
     });
     // Pasaron la meta total 
     var div = document.createElement('div');
@@ -148,7 +168,7 @@ window.addEventListener('load', function() {
     // El porcentaje total 
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
-    parrafo.textContent = '% total';
+    parrafo.innerHTML = '% total' + '<br>' + '%' + totalStudents;
     div.appendChild(parrafo);
     div.classList.add('description');
 
