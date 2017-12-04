@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+  
   var selection = document.getElementById('selection');
   // var contenidoSede = document.getElementById('contenido-sede');
 
@@ -50,14 +51,20 @@ window.addEventListener('load', function() {
     // Almacenamos el length de students en una variable
     var totalStudents = generationData.students.length;
 
+    var activeStudents = 0;
+    generationData.students.forEach(function(student) {
+      if (student.active === true) {
+        activeStudents++;
+      }
+    });   
     // Datos de estudiantes inscritas
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
-    parrafo.textContent = '# estudiantes inscritas';
+    parrafo.textContent = '# estudiantes activas';
     div.appendChild(parrafo);
     div.classList.add('description');
 
-    studentsInscribed.textContent = totalStudents;
+    studentsInscribed.textContent = activeStudents;
 
     studentsInscribed.appendChild(div);
 
@@ -114,17 +121,17 @@ window.addEventListener('load', function() {
       var promedio = total / cantidadDeSprints;
 
       // TIP: total de puntos es 3000 (tech+hse) y su 70% es 2100
-      if (promedio >= 2100) {
+      if (promedio >= 2100 && student.active === true) {
         studentsTarget++;
       }
       // TIP: total de puntajes tech es 1800 y su 70% es 1260
       var promedioTech = totalTech / cantidadDeSprints;
-      if (promedioTech >= 1260) {
+      if (promedioTech >= 1260 && student.active === true) {
         totalStudentsTech ++;
       }
       // TIP: total de puntajes hse es 1200 y su 70% es 840
       var promedioHse = totalHse / cantidadDeSprints;
-      if (promedioHse >= 840) {
+      if (promedioHse >= 840 && student.active === true) {
         totalStudentsHse ++;
       }
     });
