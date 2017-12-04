@@ -96,31 +96,6 @@ window.addEventListener('load', function() {
       // Sacamos la cantidad de sprints y lo almacenamos en una variable
       var cantidadDeSprints = student.sprints.length;
       
-      // Almacenaremos el total de la suma de tech y hse
-      // var total = 0;
-
-      // Almacenamos el total de tech
-      // var totalTech = 0;
-
-      // Almacenamos el total de hse
-      // var totalHse = 0;
-
-      // student.sprints.forEach(function(sprint) {
-      // total += (sprint.score.tech + sprint.score.hse);
-
-      // Obtenemos el puntaje de tech y lo almacenamos en una variable
-      // var tech = sprint.score.tech; 
-
-      // totalTech += tech;
-
-      // Obtenemos el puntaje de hse
-      // var hse = sprint.score.hse;
-      // totalHse += hse;
-      // });
-      // Al total le dividimos entre la cantidad de sprints y guardamos en un variable llamada promedio
-      // var promedio = total / cantidadDeSprints;
-
-      // TIP: total de puntos es 3000 (tech+hse) y su 70% es 2100
       if (student.active === true) {
         var sumTech = 0;
         var sumHse = 0;

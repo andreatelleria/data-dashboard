@@ -11,9 +11,36 @@
 
 <body>
   <header>
-    <figure class="logo">
-      <img src="assets/images/logo-laboratoria.svg" alt="">
-    </figure>
+    <div class="content-header">
+      <div class="container-logo">
+        <figure id="logo">
+            <img src="assets/images/logo-laboratoria.svg" alt="logo">
+        </figure>
+      </div>
+      <select id="selection" class="selection">
+        <!-- Le pongo ese valor para poder atrapar ese valor desde javascript -->
+        <option value="LIM-2016-2">Lima 2016 - II</option>
+        <option value="LIM-2017-1">Lima 2017 - I</option>
+        <option value="LIM-2017-2" selected="true">Lima 2017 - II</option>
+  
+        <option value="AQP-2016-2">Arequipa 2016 - II</option>
+        <option value="AQP-2017-1">Arequipa 2017 - I</option>
+  
+        <option value="CDMX-2017-1">Ciudad de Mexico 2017 - I</option>
+        <option value="CDMX-2017-2">Ciudad de Mexico 2017 - II</option>
+  
+        <option value="SCL-2016-2">Santiago de Chile 2016 - II</option>
+        <option value="SCL-2017-1">Santiago de Chile 2017 - I</option>
+        <option value="SCL-2017-2">Santiago de Chile 2017 - II</option>
+  
+      </select>
+      <!-- Tabs -->
+      <div class="box-tabs">
+        <div class="tab" data-content="0">Overview</div>
+        <div class="tab" data-content="1">Students</div>
+        <div class="tab" data-content="2">Teacher</div>
+      </div>
+    </div>
   </header>
 
   <!--sección del perfil del usuario-->
@@ -22,8 +49,9 @@
         <img src="assets/images/user.jpg" alt="Alejandra Ramirez">
         <div class="name">
           <h3 class="name">Alejandra Ramirez</h3>
-          <h4>Training Manager</h4>
+          <h4 class="task">Training Manager</h4>
         </div>
+        <hr>
       </div>
       <div class="home">
         <i class="fa fa-home" aria-hidden="true"></i>
@@ -42,33 +70,7 @@
         <h4>Sign out</h4>
     </div>
   </section>
-
-  <!-- Seleccionar sede -->
-  <div class="content-header">
-    <select id="selection" class="selection">
-      <!-- Le pongo ese valor para poder atrapar ese valor desde javascript -->
-      <option value="LIM-2016-2">Lima 2016 - II</option>
-      <option value="LIM-2017-1">Lima 2017 - I</option>
-      <option value="LIM-2017-2" selected="true">Lima 2017 - II</option>
-
-      <option value="AQP-2016-2">Arequipa 2016 - II</option>
-      <option value="AQP-2017-1">Arequipa 2017 - I</option>
-
-      <option value="CDMX-2017-1">Ciudad de Mexico 2017 - I</option>
-      <option value="CDMX-2017-2">Ciudad de Mexico 2017 - II</option>
-
-      <option value="SCL-2016-2">Santiago de Chile 2016 - II</option>
-      <option value="SCL-2017-1">Santiago de Chile 2017 - I</option>
-      <option value="SCL-2017-2">Santiago de Chile 2017 - II</option>
-
-    </select>
-    <!-- Tabs -->
-    <div class="box-tabs">
-      <div class="tab" data-content="0">Overview</div>
-      <div class="tab" data-content="1">Students</div>
-      <div class="tab" data-content="2">Teacher</div>
-    </div>
-  </div>
+  
   <!-- Información de los datos -->
   <section class="content-sede">
     <div class="container">
@@ -134,61 +136,20 @@
           </div>
         </div>
         <div class="content">
-          <!-- Pestaña Students -->
-          <section class="students-tab" id="studentsTab">
-              <!-- Filtro de alumnas por especialización -->
-              <div class="specialization" id="specialization">
-                <h3>Especialidad:</h3>
-                <form>
-                  <label><input type="checkbox" id="javascript">Javascript</label>
-                  <label><input type="checkbox" id="uxDesign">UX Design</label>
-                  <label><input type="checkbox" id="frontEnd">Front end Designer</label>
-                </form>
-              </div>
- 
-              <!-- Buscador de alumnas -->
-              <div class="search-box">
-                <span><i class="fa fa-search" aria-hidden="true"></i></span>
-                <form>
-                  <input type="search" name="search">
-                </form>
-              </div>
- 
-              <!-- Contenedor de datos de alumnas -->
-              <div class="students-profile" id="studentsProfile">
-                <div id="profilePic">
- 
-                </div>
-                <!-- Contenedor de habilidades y promedios -->
-                <div class="students-skills" id="studentsSkills">
-                  <div class="skills">
-                    <p><strong>%</strong></p>
-                    <p>Tech Skills</p>
-                  </div>
-                  <div class="skills">
-                    <p><strong>%</strong></p>
-                    <p>HSE</p>
-                  </div>
-                  <div class="skills">
-                    <p><strong>INTERM</strong></p>
-                    <p>English Skills</p>
-                  </div>
-                </div>
-                <p><a href="#">Ver Perfil <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
-              </div>
-            </section>
-
+          Contenido de Students
         </div>
         <div class="content">Contenido de Teachers</div>
       </div>
     </div>
   </section>
   <!-- Base de datos -->
+  <section id = 'myPieChart'>
+
+  </section>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript"></script>
   <script src="./js/data.js"></script>
   <!-- Aquí va tus archivos JS -->
-  <script src="./js/app.js">
-  
-  </script>
+  <script src="./js/app.js"></script>
 </body>
-
 </html>
