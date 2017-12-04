@@ -25,6 +25,7 @@ window.addEventListener('load', function() {
   var scoresTeacher = document.getElementById('scores-teacher');
 
   var scoresJedi = document.getElementById('scores-jedi');
+  var averageTotal = document.getElementById('average-total');
 
   selection.addEventListener('change', mostrarInfo);
 
@@ -84,7 +85,8 @@ window.addEventListener('load', function() {
     div.classList.add('description');
 
     // Datos de estudiantes que desartaron
-    studentsDeserted.textContent = Math.floor((counter * 100) / totalStudents) + '%';
+    var totalStudentsN = generationData['students'].length;
+    studentsDeserted.textContent = Math.floor((counter * 100) / totalStudentsN) + '%';
 
     studentsDeserted.appendChild(div);
     
@@ -95,7 +97,6 @@ window.addEventListener('load', function() {
     generationData.students.forEach(function(student) {
       // Sacamos la cantidad de sprints y lo almacenamos en una variable
       var cantidadDeSprints = student.sprints.length;
-      
       if (student.active === true) {
         var sumTech = 0;
         var sumHse = 0;
@@ -119,16 +120,7 @@ window.addEventListener('load', function() {
           totalStudentsHse++;
         }
       }
-      // TIP: total de puntajes tech es 1800 y su 70% es 1260
-      // var promedioTech = totalTech / cantidadDeSprints;
-      // if (promedioTech >= 1260 && student.active === true) {
-      //   totalStudentsTech++;
-      // }
-      // TIP: total de puntajes hse es 1200 y su 70% es 840
-      // var promedioHse = totalHse / cantidadDeSprints;
-      // if (promedioHse >= 840 && student.active === true) {
-      //   totalStudentsHse ++;
-      // }
+     
     });
     // Pasaron la meta total 
     var div = document.createElement('div');
@@ -143,11 +135,11 @@ window.addEventListener('load', function() {
     // El porcentaje total 
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
-    parrafo.innerHTML = '% total' + '<br>' + '%' + totalStudents;
+    parrafo.innerHTML = '% total' + '<br>' + activeStudents;
     div.appendChild(parrafo);
     div.classList.add('description');
 
-    var porcentajePasaron = Math.floor((studentsTarget * 100) / totalStudents);
+    var porcentajePasaron = Math.floor((studentsTarget * 100) / activeStudents);
     totalApproved.textContent = porcentajePasaron + '%';
     totalApproved.appendChild(div);
 
@@ -168,7 +160,7 @@ window.addEventListener('load', function() {
     div.appendChild(parrafo);
     div.classList.add('description');
 
-    averageTech.textContent = Math.floor((totalStudentsTech * 100) / totalStudents) + '%';
+    averageTech.textContent = Math.floor((totalStudentsTech * 100) / totalStudentsN) + '%';
     averageTech.appendChild(div);
 
     // Pasaron la meta hse
@@ -191,22 +183,66 @@ window.addEventListener('load', function() {
 
     averageHse.appendChild(div);
 
-    // [NPS] = [Promoters] - [Detractors]
-    
-    var result = 0;
-    for (var i = 0; i < generationData.ratings.length; i++) {
-      var promoters = generationData.ratings[i].nps.promoters;
-      var detractors = generationData.ratings[i].nps.detractors;
-      var nps = promoters - detractors;
-      result += nps;
+    var rating = generationData['ratings'];
+    var promoters = [];
+    var passive = [];
+    var detractors = [];
+    var totalNps = [];
+    var acumulativeNps = 0;
+    var porcentajeAcumulativeNps;
+    var porcentajePromotors = 0;
+    var porcentajePassive = 0;
+    var porcentajeDetractors = 0;
+    var totalPromoters = 0;
+    var totalPassive = 0;
+    var totalDetractors = 0;
+  
+    for (var i = 0; i < rating.length; i++) {
+      var nps = rating[i].nps.promoters - rating[i].nps.detractors;
+      totalNps.push(nps);
+  
+      promoters.push(rating[i].nps.promoters);
+      passive.push(rating[i].nps.passive);
+      detractors.push(rating[i].nps.detractors);
+  
+      totalPromoters = totalPromoters + promoters[i];
+      totalPassive = totalPassive + passive[i];
+      totalDetractors = totalDetractors + detractors[i];
     }
+   
+    porcentajePromotors = totalPromoters * 100 / (totalPromoters + totalDetractors + totalPassive);
+    porcentajeDetractors = totalDetractors * 100 / (totalPromoters + totalDetractors + totalPassive);
+    porcentajePassive = totalPassive * 100 / (totalPromoters + totalDetractors + totalPassive);
+  
+    var promoters = (Math.round(porcentajePromotors) + '%' + '\t' + 'PROMOTER');
+    var detractors = (Math.round(porcentajeDetractors) + '%' + '\t' + 'DETRACTORS');
+    var passive = (Math.round(porcentajePassive) + '%' + '\t' + 'PASSIVE');
+  
+    // var porcentajeIndividual = document.getElementById('porcentajeVarios');
+    averageTotal.innerHTML = promoters + '<br>' + passive + '<br>' + detractors;
+    console.log(totalNps.length);
+  
+    for (var i = 0; i < totalNps.length; i++) {
+      acumulativeNps = acumulativeNps + totalNps[i];
+    }
+  
+    porcentajeAcumulativeNps = acumulativeNps / totalNps.length;
+  
+    var cumulativeNps = Math.round(porcentajeAcumulativeNps) + '%';
+  
+    // var cumulativeNpsShow = document.getElementById('cumulativeNps');
+    average.innerHTML = cumulativeNps + '<br>' + '% CUMULATIVE NPS';
+
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
-    parrafo.textContent = '% de nps';
+    parrafo.textContent = '% CUMULATIVE NPS';
     div.appendChild(parrafo);
     div.classList.add('description');
-    averageNps.textContent = Math.floor(((result / generationData.ratings.length) * 100) / 100) + '%';
+
+    averageNps.innerHTML = cumulativeNps;
     averageNps.appendChild(div);
+
+    averageTotal.innerHTML = promoters + '<br>' + passive + '<br>' + detractors;
 
     // El porcentaje de estudiantes satisfechas con la experiencia de Laboratoria.
     var totalStudent = 0;
@@ -216,6 +252,7 @@ window.addEventListener('load', function() {
       var totalSatis = cumple + supera;
       totalStudent += totalSatis;
     }
+
     var div = document.createElement('div');
     var parrafo = document.createElement('p');
     parrafo.textContent = '% estudiantes satisfechas';
