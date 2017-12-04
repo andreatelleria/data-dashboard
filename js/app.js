@@ -269,15 +269,19 @@ window.addEventListener('load', function() {
         engProfileContainer.classList.add('skillsProfile');
 
         /*Obtener puntaje de cada alumna*/
-        // var studentSprints = generationData.students[i].sprints;
-        // console.log(studentSprints);
-        //
-        // for (var j = 0; j < studentSprints.length; j++) {
-        //   var studentTechScore = studentSprints[j].score.tech;
-        //   var studentHseScore = studentSprints[j].score.hse;
-        //   //console.log(studentTechScore);
-        //   //console.log(studentHseScore);
-        // }
+        var studentSprints = generationData.students[i].sprints;
+        //console.log(studentSprints);
+
+        for (var j = 0; j < studentSprints.length; j++) {
+          var studentTechScore = studentSprints[j].score.tech;
+          var studentHseScore = studentSprints[j].score.hse;
+          console.log(studentHseScore); // expresa las notas por tech y sprints.
+          
+
+
+          console.log(studentTechScore);
+          console.log(studentHseScore);
+        }
 
       }
     }
